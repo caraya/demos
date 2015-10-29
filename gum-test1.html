@@ -1,39 +1,40 @@
 <html>
-  <charset="utf-8">
   <head>
-    <title>Getusermedia Example</title>
+    <title>HTML5 Webcam Test</title> 
+    <style type="text/css">
+      body{
+        max-width: 300px;
+        max-height: 300px;
+      }
+      #live_video{
+        top: 0px;
+        height: 100%;
+        width: 100%;
+        left: 0px;
+      }
+      
+      .explainer {
+        border: 2px solid blue;
+        padding: 2em';
+      }
+    </style>
   </head>
   <body>
-  <video id="video"><video>
-  
-  <script>
-  function hasGetUserMedia() {
-  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-            navigator.mozGetUserMedia || navigator.msGetUserMedia);
-  }
-
-  if (hasGetUserMedia()) {
-    navigator.getUserMedia || 
-    navigator.webkitGetUserMedia ||
-    navigator.mozGetUserMedia || 
-    navigator.msGetUserMedia({audio: false, video: true}, success, error);
-    
-  navigator.getUserMedia({audio: true, video: true}, success, error);
-  function success(stream)
-  { 
-    // ... use 'stream' ...
-    var video = document.getElementsByTagName('video')[];
-    if  navigator.webkitGetUserMedia { // Chrome/Opera/Safari still use the webkit prefixed extension
-      video.src = stream;
-    }
-    else {
-      video.src = stream
-    }
-  }
-
-  } else {
-    alert('getUserMedia() is not supported in your browser');
-  }
-
-  // ...
-</script>
+    <div class="explainer">
+      <p>This is a WebKit Specific demo for getUserMedia() to see if it works in iBooks. </p>
+      
+      <p>We might have to expanded if we need to account for other rendering engines / prefixes or the unprefixed version</p>
+      
+      <p>Taken from: <a href="http://stackoverflow.com/questions/12442864/chrome-webkitgetusermedia">http://stackoverflow.com/questions/12442864/chrome-webkitgetusermedia</a></p>
+    </div>
+    <video id="live_video" autoplay controls></video>
+    <script type="text/javascript">
+      video = document.getElementById("live_video");
+      navigator.webkitGetUserMedia({video:true, audio:true},
+          function(stream) {
+            video.src = window.webkitURL.createObjectURL(stream);
+          }
+      );
+    </script>
+  </body>
+</html>
