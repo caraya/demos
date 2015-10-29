@@ -1,0 +1,39 @@
+<html>
+  <charset="utf-8">
+  <head>
+    <title>Getusermedia Example</title>
+  </head>
+  <body>
+  <video id="video"><video>
+  
+  <script>
+  function hasGetUserMedia() {
+  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+  }
+
+  if (hasGetUserMedia()) {
+    navigator.getUserMedia || 
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia || 
+    navigator.msGetUserMedia({audio: false, video: true}, success, error);
+    
+  navigator.getUserMedia({audio: true, video: true}, success, error);
+  function success(stream)
+  { 
+    // ... use 'stream' ...
+    var video = document.getElementsByTagName('video')[];
+    if  navigator.webkitGetUserMedia { // Chrome/Opera/Safari still use the webkit prefixed extension
+      video.src = stream;
+    }
+    else {
+      video.src = stream
+    }
+  }
+
+  } else {
+    alert('getUserMedia() is not supported in your browser');
+  }
+
+  // ...
+</script>
